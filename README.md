@@ -1,6 +1,6 @@
 # [HYU] 2019_1학기_SCSC OS_운영체제 실습
 
-## 개발 환경 설정
+## 개발 환경 설정 (based on OSX)
 ### Requirements
 - [VirtualBox](https://www.vagrantup.com/)
 - [Vagrant](https://www.virtualbox.org/)
