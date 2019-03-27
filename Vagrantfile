@@ -8,10 +8,7 @@ Vagrant.configure(2) do |config|
   config.vm.define "hyu_os_2019", primary: true do |web|
     web.vm.box = "ubuntu/xenial64"
     web.vm.network "private_network", ip: "192.168.50.100"
-
-    # NFS mount for fix permission issue
     web.vm.synced_folder ".", "/vagrant", :nfs => false
-
     web.vm.provider :virtualbox do |vb|
       vb.name = "hyu_os_2019"
       vb.gui = false
