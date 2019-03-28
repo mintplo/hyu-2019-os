@@ -33,7 +33,7 @@ vagrant destroy (remove virtual machine)
 |----------|:-------------:|
 | 2019-03-13 | ubuntu 16.04 LTS 설치 및 vim 기본 이용 |
 | 2019-03-20 | 커널 3.x 버전 설치 (cscope, ctags)  |
-| 2019-03-27 | 예정 |
+| 2019-03-27 | 커널 5.x 버전 설치 및 user custom syscall 추가 |
 
 ## 실습
 1. 예정
