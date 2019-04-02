@@ -4,10 +4,17 @@
 ### Requirements
 - [VirtualBox](https://www.vagrantup.com/)
 - [Vagrant](https://www.virtualbox.org/)
+- [Vagrant Disk Size Plugins](https://github.com/sprotheroe/vagrant-disksize)
 
 위 Requirements를 자신의 운영체제(OS)에 맞게 설치
 
 1. 프로젝트 루트 폴더 경로에 Vagrantfile을 자신에게 맞게 설정을 한다. [Vagrantfile 설정 가이드](https://www.vagrantup.com/docs/vagrantfile/)
+
+VB Disk Size 설정을 위한 vagrant plugin 설치를 아래의 커맨드로 진행한다.
+```
+vagrant plugin install vagrant-disksize
+```
+
 2. 아래의 코드를 실행하여 VM을 생성한다.
 
 ```
