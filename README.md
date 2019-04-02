@@ -37,7 +37,9 @@ vagrant destroy (remove virtual machine)
 
 ## 실습
 1. Ubuntu 16.04 LTS 에서 5.0.5 커널 빌드 및 설치시 Out of Memory, Disk Size 문제가 발생
+
 디스크의 사이즈는 최소한 30GB 이상, 메모리는 2048MB로 설정하는 것을 권장
 
 2. #include <asm/uaccess.h> 은 5.x 버전에서 <linux/uaccess.h> 로 사용해야 함
+
 access_ok, copy_to_user 등 uaccess.h 에 정의된 함수를 사용하기 위해서는 5.x 버전에서 <linux/uaccess.h>로 include
