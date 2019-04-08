@@ -41,6 +41,7 @@ vagrant destroy (remove virtual machine)
 | 2019-03-13 | ubuntu 16.04 LTS 설치 및 vim 기본 이용 |
 | 2019-03-20 | 커널 3.x 버전 설치 (cscope, ctags)  |
 | 2019-03-27 | 커널 5.x 버전 설치 및 user custom syscall 추가 |
+| 2019-04-03 | Process Fork 기본 실습 + 커널 빌드 |
 
 ## 실습
 1. Ubuntu 16.04 LTS 에서 5.0.5 커널 빌드 및 설치시 Out of Memory, Disk Size 문제가 발생
