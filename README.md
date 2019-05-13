@@ -42,6 +42,11 @@ vagrant destroy (remove virtual machine)
 | 2019-03-20 | 커널 3.x 버전 설치 (cscope, ctags)  |
 | 2019-03-27 | 커널 5.x 버전 설치 및 user custom syscall 추가 |
 | 2019-04-03 | Process Fork 기본 실습 + 커널 빌드 |
+| 2019-04-10 | Prcoess Fork and Exec |
+| 2019-04-17 | Pipeline + Signal |
+| 2019-04-24 | 시험으로 인한 Skip |
+| 2019-05-01 | IPC + Message Queue + Shared Memory |
+| 2019-05-08 | Semaphore + Mutex |
 
 ## 실습
 1. Ubuntu 16.04 LTS 에서 5.0.5 커널 빌드 및 설치시 Out of Memory, Disk Size 문제가 발생
