@@ -1,4 +1,4 @@
-# [HYU] 2019_1학기_SCSC_OS_운영체제 실습
+## [HYU] 2019_1학기_SCSC_OS_운영체제 실습
 
 ## 개발 환경 설정 (based on OSX)
 ### Requirements
