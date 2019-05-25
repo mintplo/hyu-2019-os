@@ -20,6 +20,8 @@ typedef struct philosopher
 
 philosopher phil[NUM_PHIL];
 sem_t chopstick[NUM_PHIL];
+/** Critical Section 을 위한 Semaphore 변수 */
+sem_t sema;
 
 // 10~500 msec wait
 int idlewait()
@@ -51,6 +53,18 @@ void initPhil(void)
         phil[i].state = THINKING;
         phil[i].wait = 0;
     }
+
+    // Chopsticks Semaphore Initialize to 1 (처음 집는 철학자를 위해 1로 설정 sem_wait시 바로 PICK이 가능)
+    for (i = 0; i < NUM_PHIL; i++)
+    {
+        if (sem_init(&chopstick[i], 0, 1) < 0)
+        {
+            perror("semaphore initialization failed");
+            exit(1);
+        }
+    }
+
+    sem_init(&sema, 0, 1);
     /* .................................................................. ............................ */
 }
 
@@ -76,7 +90,6 @@ void *dining(void *arg)
     srand(time((void *)0));
     start_time = tick();
 
-    printf("Before Dining start %d\n", i);
     while (1)
     {
         // Random Idle Wait for STATE CHANGE TO HUNGRY
@@ -85,14 +98,17 @@ void *dining(void *arg)
         start_hungry = tick();
         phil[i].state = HUNGRY;
 
+        // Critical Section WAITING
+        sem_wait(&sema);
+
         /**
          * PICK UP Both Chopsticks
          * 양쪽 젓가락을 들어야 식사를 할 수 있다.
-         * (홀수 번째 철학자는 오른쪽 젓가락부터 PICK, 짝수 번째 철학자는 왼쪽 젓가락부터 PICK)
+         * (N번째 철학자는 오른쪽 젓가락을 먼저 확인, 나머지 철학자는 왼쪽 젓가락을 먼저 확인)
          * 
          * sem_wait() 함수를 이용해 CHOPSTICK이 사용중이면 WAIT CONTINUE, 유휴 상태면 PICK
          */
-        if ((i % 2) == 0)
+        if ((i + 1) != NUM_PHIL)
         {
             sem_wait(&chopstick[left]);
             sem_wait(&chopstick[right]);
@@ -114,6 +130,9 @@ void *dining(void *arg)
         // Release Both Chopsticks Because OF EATING END
         sem_post(&chopstick[left]);
         sem_post(&chopstick[right]);
+
+        // Critical Section RELEASE
+        sem_post(&sema);
 
         // Switch STATE FROM EATING TO THINKING (EATING END)
         phil[i].wait += end_hungry - start_hungry;
@@ -144,15 +163,6 @@ void main(void)
         args[i] = i;
 
     /* .................................................................. ............................ */
-    // Chopsticks Semaphore Initialize to 1 (처음 집는 철학자를 위해 1로 설정 sem_wait시 바로 PICK이 가능)
-    for (i = 0; i < NUM_PHIL; i++)
-    {
-        if (sem_init(&chopstick[i], 0, 1) < 0)
-        {
-            perror("semaphore initialization failed");
-            exit(1);
-        }
-    }
 
     // Pthread Create for number of NUM_PHIL
     // 생성할 때 해당 Thread의 dining을 하는 철학자의 정보도 같이 넘긴다.
@@ -175,6 +185,8 @@ void main(void)
             exit(1);
         }
     }
+
+    sem_destroy(&sema);
     /* .................................................................. ............................ */
 
     end = tick();
