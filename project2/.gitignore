@@ -1,0 +1,8 @@
+# VS Code
+.vscode
+
+# DEBUG
+*.dSYM
+
+# Output
+scheduler
