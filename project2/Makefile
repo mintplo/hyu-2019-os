@@ -1,5 +1,5 @@
 CC = gcc
-OBJS = scehduler.o
+OBJS = scheduler.o
 TARGET = scehduler
  
 .SUFFIXES : .c .o
