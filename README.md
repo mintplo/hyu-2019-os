@@ -109,3 +109,13 @@ CPU 스케쥴러의 FCFS, non-preempt SJF, RR, PS를 Simulation 하기.
 - 시간 제한, 메모리 요구량, 열린 파일의 수, 프로세스의 중요성, 자원사용 비용 등
 - 예를 들어 SJF 스케줄링은 버스트 시간이 짧을수록 우선순위를 높게 책정하는 경우라 할 수 있음
 - 선점형, 비선점형 모두 가능
+
+&nbsp;
+--------
+
+The source code of *mintplo* is primarily distributed under the terms
+of the [GNU Affero General Public License v3.0] or any later version. See
+[COPYRIGHT] for details.
+
+[GNU Affero General Public License v3.0]: LICENSE
+[COPYRIGHT]: COPYRIGHT
